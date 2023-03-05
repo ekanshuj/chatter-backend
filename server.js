@@ -44,10 +44,4 @@ io.on("connection", (socket) => {
     const userSocket = users.get(data.to);
     userSocket && socket.to(userSocket).emit("receive__messages", data.message);
   });
-
-  socket.on('disconnect', () => {
-    socket.removeAllListeners('user');
-    socket.removeAllListeners('send__messages');
-    io.removeAllListeners('connection');
-  });
 });
